@@ -70,7 +70,7 @@
                         // Debug: Log targetPage from response
                         console.log("targetPage from backend:", response.data.targetPage);
 
-                        // Use targetPage from backend to navigate
+                        // Get response data from backend to get target Page navigation
                         const targetPage = response.data.targetPage || '/';
                         navigate(targetPage);
                         toast.success('Login Success');
