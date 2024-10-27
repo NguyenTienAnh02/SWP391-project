@@ -30,6 +30,7 @@ import ManagerRatingUser from './screens/ManagerRatingUser';
 import ManagerRatingMentor from './screens/ManagerRatingMentor';
 import FogotPassword from './screens/FogotPassword';
 import ManagerMentorRegist from './screens/ManagerMentorRegist';
+import ListMentor from "./screens/ListMentor";
 
 function App() {
 
@@ -49,7 +50,7 @@ function App() {
      <Route path='/manager/rating' element={<ManagerRatingUser/>}/>
      <Route path='/managermentor/rating' element={<ManagerRatingMentor/>}/>
      <Route path='/profile' element={<Profile/>}/>
-     <Route path='/listmentor' element={<ListMentee/>}/>
+     <Route path='/listmentor' element={<ListMentor/>}/>
      <Route path='/11' element={<ProfileUser/>}/>
      <Route path='/changepass' element={<ChangePass/>}/>
      <Route path='/skill/edit/:id' element={<EditSkill/>}/>

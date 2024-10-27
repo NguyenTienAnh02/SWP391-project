@@ -13,4 +13,6 @@ public class AuthenticationResponse {
     private String token;
     private String refreshToken;
     private String message;
+    private String targetPage;
 }
+

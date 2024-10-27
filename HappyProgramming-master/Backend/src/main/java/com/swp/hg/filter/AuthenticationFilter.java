@@ -18,6 +18,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -30,43 +31,45 @@ public class AuthenticationFilter {
 
     public AuthenticationResponse authenticate(AuthenticationRequest authenticationRequest) {
         try {
-            String userName, password;
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
-                            userName = authenticationRequest.getUsername(),
-                            password= authenticationRequest.getPassword()
+                            authenticationRequest.getUsername(),
+                            authenticationRequest.getPassword()
                     )
-
             );
-            System.out.println("username: " + userName);
-            System.out.println("password: " + password);
         } catch (AuthenticationException ex) {
             return AuthenticationResponse.builder().message("Failed to authenticate").build();
         }
-        User user = userImpl.takeUserByUsername(authenticationRequest.getUsername());
 
-        List<Role> role = null;
-        if (user != null) {
-            role = roleCustomRepo.getRole(user);
+        // Retrieve the user and roles
+        User user = userImpl.takeUserByUsername(authenticationRequest.getUsername());
+        List<Role> roles = user != null ? roleCustomRepo.getRole(user) : new ArrayList<>();
+
+        if (roles.isEmpty()) {
+            return AuthenticationResponse.builder().message("No roles assigned").build();
         }
 
-        Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        // Debug: Print roles to confirm they are correct
+        roles.forEach(role -> System.out.println("Role: " + role.getName() + " (ID: " + role.getId() + ")"));
 
-        Set<Role> set = new HashSet<>();
+        // Determine targetPage based on the role ID
+        String targetPage = roles.stream().anyMatch(role -> role.getId() == 1) ? "/dashboard" : "/";
 
-        role.stream().forEach(c -> set.add(new Role(c.getName())));
+        // Debug: Print targetPage to confirm it's set correctly
+        System.out.println("targetPage set to: " + targetPage);
 
-        user.setRoles(set);
-
-        set.stream().forEach(i -> authorities.add(new SimpleGrantedAuthority(i.getName())));
-
-        var jwtToken = jwtService.createToken(user, authorities);
+        // Generate tokens
+        var jwtToken = jwtService.createToken(user, roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList()));
         var jwtRefreshToken = jwtService.createRefreshToken(user);
 
+        // Return response with targetPage
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .refreshToken(jwtRefreshToken)
                 .message("Logged in successfully")
+                .targetPage(targetPage)
                 .build();
     }
+
+
 }

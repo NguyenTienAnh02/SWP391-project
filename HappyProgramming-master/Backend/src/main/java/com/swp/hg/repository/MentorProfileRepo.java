@@ -11,9 +11,9 @@ import java.util.List;
 @Repository
 public interface MentorProfileRepo extends JpaRepository<MentorProfile, Integer> {
 
-    @Query(value = "select mp.* from mentor_profile mp join user u on mp.userid = u.id " +
-            "join mentor_regist m on m.menteeid = u.id " +
-            "where m.status = 1", nativeQuery = true)
+    @Query(value =
+            "select mp.* from mentor_profile mp ",
+            nativeQuery = true)
     List<MentorProfile> getMentorProfileByStatus();
 
     @Query(value = "select * from mentor_profile where userid = :id LIMIT 1", nativeQuery = true)
