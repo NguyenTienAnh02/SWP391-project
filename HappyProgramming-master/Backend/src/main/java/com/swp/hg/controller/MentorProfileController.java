@@ -33,6 +33,7 @@ public class MentorProfileController {
 
     @GetMapping("/active")
     public ResponseEntity<?> getActiveMentors() {
+        System.out.println("getMentorsActive: " + mentorProfileService.getActiveMentors());
         return ResponseEntity.ok().body(mentorProfileService.getActiveMentors());
     }
 

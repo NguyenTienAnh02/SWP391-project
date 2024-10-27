@@ -3,7 +3,7 @@ import ProfileTemplate from "../template/ProfileTemplate";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const ListMentee = () => {
+const ListMentor = () => {
 
     const [listmentor, setListMentor] = useState([]);
     const [token] = useState(sessionStorage.getItem("token"));
@@ -148,4 +148,4 @@ const ListMentee = () => {
     );
 }
 
-export default ListMentee;
+export default ListMentor;
