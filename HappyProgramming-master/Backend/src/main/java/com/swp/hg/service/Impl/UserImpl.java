@@ -101,7 +101,12 @@ public class UserImpl implements UserService, UserDetailsService {
         Role role = roleRepository.findByName(role_name);
         user.getRoles().remove(role);
     }
-
+    @Override
+    public void updateUserStatus(int id, boolean status) {
+        User user = userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+        user.setStatus(status);
+        userRepository.save(user);
+    }
     @Override
     public User getUser(String username) {
         return userRepository.findByUsername(username).get();

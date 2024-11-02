@@ -12,7 +12,7 @@ public interface UserService {
     User getById(int id);
 
     List<User> getListUserByRole(String role_name);
-
+    void updateUserStatus(int id, boolean status);
     User saveUser(User user);
     Role saveRole(Role role);
     void addRoleToUser(String username, String role_name);

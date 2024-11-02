@@ -1,0 +1,145 @@
+.template-admin {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f7f9fc;
+    color: #333;
+}
+
+.template-admin h2 {
+    color: #007bff;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.search-bar, .filters {
+    margin-bottom: 20px;
+}
+
+.filters select, .search-bar input {
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    width: 100%;
+    margin-right: 10px;
+}
+
+.table {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table th {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+
+.table td {
+    text-align: center;
+    padding: 10px;
+    vertical-align: middle;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table tr:hover {
+    background-color: #e9ecef;
+}
+
+.status-active {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.status-banned {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.action-button {
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+.btn-ban {
+    background-color: #dc3545;
+}
+
+.btn-ban:hover {
+    background-color: #c82333;
+}
+
+.btn-unban {
+    background-color: #28a745;
+}
+
+.btn-unban:hover {
+    background-color: #218838;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination li a {
+    padding: 8px 12px;
+    border-radius: 5px;
+    color: #007bff;
+    border: 1px solid #007bff;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.pagination li a:hover, .pagination li a.active {
+    background-color: #007bff;
+    color: #fff;
+}
+.filters .form-check {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.filters .form-check-label {
+    font-weight: 500;
+    color: #555;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.filters .form-check-input {
+    margin-right: 5px;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    accent-color: #007bff;
+}
+
+.filters .form-select {
+    width: 100%;
+    border-radius: 5px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+}
+
+.filters .form-select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}

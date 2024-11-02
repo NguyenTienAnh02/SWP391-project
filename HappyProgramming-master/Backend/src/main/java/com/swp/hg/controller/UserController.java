@@ -68,6 +68,13 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
+    @PutMapping("/{id}/status")
+    public ResponseEntity<?> updateUserStatus(@PathVariable int id, @RequestBody JsonNode statusJson) {
+        boolean status = statusJson.get("status").asBoolean();
+        userService.updateUserStatus(id, status);
+        return ResponseEntity.ok().build();
+    }
+
     @Data
     class RoleToUserForm {
         private String username;

@@ -34,7 +34,6 @@ function SideBarMentor() {
                         console.log(data);
                       });
                   } else {
-                    // Xử lý khi userID không phải là mentor
                     console.log("userID không phải là mentor");}
                 
             } catch (error) {
@@ -71,15 +70,9 @@ function SideBarMentor() {
 
     return (
         <div>
-            
-
-                {/*  <!-- Page Wrapper --> */}
                 <div id="wrapper" >
-
-                    {/*  <!-- Sidebar --> */}
                     <ul className={style} id="accordionSidebar"  style={{maxWidth:"90%"}}>
 
-                        {/*  <!-- Sidebar - Brand --> */}
                         <a className="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                             <div className="sidebar-brand-icon rotate-n-15">
                                 <i className="fas fa-laugh-wink"></i>
@@ -89,28 +82,18 @@ function SideBarMentor() {
                                 <button className="rounded-circle border-0" id="sidebarToggle" onClick={changeStyle}></button>
                             </div>
                         </a>
-
-                        {/*   <!-- Divider --> */}
                         <hr className="sidebar-divider my-0" />
-
-                        {/*  <!-- Nav Item - Dashboard --> */}
-                        
                         <li className="nav-item active">
                             <Link className="nav-link" to={'/'} >
                             
                                 <span>Home</span>
                                 </Link>
                         </li>
-
-                        {/*  <!-- Divider --> */}
                         <hr className="sidebar-divider" />
-
-                        {/*   <!-- Heading --> */}
                         <div className="sidebar-heading">
                             Interface
                         </div>
 
-                        {/*  <!-- Nav Item - Pages Collapse Menu --> */}
                         <li className="nav-item">
                             <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                                 aria-expanded="true" aria-controls="collapseTwo">
@@ -127,18 +110,10 @@ function SideBarMentor() {
                             </div>
                         </li>
 
-                        {/* <!-- Nav Item - Utilities Collapse Menu --> */}
-                        
-
-                        {/*  <!-- Divider --> */}
                         <hr className="sidebar-divider" />
-
-                        {/* <!-- Heading --> */}
                         <div className="sidebar-heading">
                             Addons
                         </div>
-
-                        {/*  <!-- Nav Item - Pages Collapse Menu --> */}
                         <li className="nav-item">
                             <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                                 aria-expanded="true" aria-controls="collapsePages">
@@ -150,30 +125,17 @@ function SideBarMentor() {
                                     <h6 className="collapse-header">Page Screens:</h6>
                                     <Link className="collapse-item" to={'/profile'}>Profile</Link>
                                     <Link className="collapse-item" to={'/changepass'}>Change Password</Link>
-                                    {/* <div className="collapse-divider"></div>
-                                    <h6 className="collapse-header">Other Pages:</h6>
-                                    <a className="collapse-item" href="404.html">404 Page</a>
-                                    <a className="collapse-item" href="blank.html">Blank Page</a> */}
                                 </div>
                             </div>
                         </li>
-
-                        {/* <!-- Nav Item - Charts --> */}
-                       
-
-                        {/* <!-- Divider --> */}
                         <hr className="sidebar-divider d-none d-md-block" />
                         <li className="nav-item active">
                             <Link className="nav-link" to={'/managermentor/rating'} >
-                            
                                 <span>Rating </span>
                                 </Link>
                         </li>
                     </ul>
-                    
-                    
                 </div>
-            
         </div>
     )
 }

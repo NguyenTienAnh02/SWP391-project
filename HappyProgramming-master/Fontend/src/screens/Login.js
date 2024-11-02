@@ -71,7 +71,10 @@
                         console.log("targetPage from backend:", response.data.targetPage);
 
                         // Get response data from backend to get target Page navigation
-                        const targetPage = response.data.targetPage || '/';
+                        let targetPage = response.data.targetPage || '/';
+                        if (targetPage === '/dashboard') {
+                            targetPage = '/';  // Thay thế '/new-path' bằng đường dẫn bạn muốn
+                        }
                         navigate(targetPage);
                         toast.success('Login Success');
                     } else {
