@@ -41,13 +41,6 @@ function ManagerSkill() {
         }
     })
 
-
-
-
-
-
-
-
     useEffect(() => {
         if (token) {
             console.log("Token is stored in localStorage:", token);

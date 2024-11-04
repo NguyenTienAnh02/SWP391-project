@@ -106,7 +106,6 @@ const ListMentorSkill = () => {
                                                     </h3>
                                                     <hr />
                                                     <div className="mentee-details">
-
                                                         <h5>
                                                             <i style={{ marginRight: '45px' }} className="fas fa-map-marker-alt" />  {m.mentorProfile.address}
                                                         </h5>

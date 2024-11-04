@@ -31,6 +31,10 @@ import ManagerRatingMentor from './screens/ManagerRatingMentor';
 import FogotPassword from './screens/FogotPassword';
 import ManagerMentorRegist from './screens/ManagerMentorRegist';
 import ListMentor from "./screens/ListMentor";
+import ScheduleMentor from "./screens/ScheduleMentor";
+import MenteeList from "./screens/MenteeList";
+import ClassMember from "./screens/ClassMember";
+import RegisClass from "./screens/RegisClass";
 
 function App() {
 
@@ -68,6 +72,10 @@ function App() {
      <Route path="/*" element={<Error />}/>
      <Route path='/view/ratting' element={<ViewRatting/>}/>
      <Route path='/manager/regist' element={<ManagerMentorRegist/>}/>
+        <Route path={'/schedule/mentor'} element={<ScheduleMentor/>} />
+        <Route path={'/mentee/list'} element={<MenteeList/>}/>
+         <Route path={'/member'} element={<ClassMember/>}/>
+        <Route path={'/regis-class'} element={<RegisClass/>}/>
      </Routes>   
     </BrowserRouter>
   );

@@ -9,7 +9,6 @@ import TemplateUser from "../template/TemplateUser";
 const AddRequest = () => {
     const { id, mentorID } = useParams();
     const token = sessionStorage.getItem('token')
-   
 
     const [skill, setSkill] = useState([]);
     const [title, setTitle] = useState('');
@@ -82,6 +81,9 @@ const AddRequest = () => {
         }
     };
 
+    const handleBack = () => {
+        navigate('/regis-class');
+    };
     return (
         <TemplateUser>
         <Row>
@@ -119,11 +121,12 @@ const AddRequest = () => {
                                     onChange={(e, editor) => {
                                         const data = editor.getData();
                                         setContent(data);
-                                    
-                                       
                                     }}
                                 />
                                 </Form.Group>
+                            </Row>
+                            <Row>
+                                <Button style={{margin:15}} onClick={handleBack}>Choose class</Button>
                             </Row>
                             <Row>
                                 <Form.Group className="col-md-12">

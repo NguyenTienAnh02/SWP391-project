@@ -90,7 +90,6 @@ function Navbar() {
                         
                       });
                   } else {
-                    // Xử lý khi userID không phải là mentor
                     console.log("userID không phải là mentor");}
             } catch (error) {
                 console.error(error);
@@ -109,8 +108,6 @@ function Navbar() {
     
     const history = useNavigate()
 
-    // Hàm để hiển thị/ẩn modal
-    
     const handleSkillClick = (skillID) => {
         history(`/listmentor/skill/${skillID}`);
         window.location.reload();
@@ -152,15 +149,20 @@ function Navbar() {
                             <div className="navbar-links" styles={{ textAlign: "right" }}>
                                 <Row>
                                     <li className="lnv nav-item font">
-                                        <NavLink to="/" className={({ isActive }) => (isActive ? 'link-acvtive' : 'link')} style={{ textDecoration: "none", fontSize: "18px" }}>Home</NavLink>
+                                        <NavLink to="/" className={({isActive}) => (isActive ? 'link-acvtive' : 'link')}
+                                                 style={{textDecoration: "none", fontSize: "18px"}}>Home</NavLink>
                                     </li>
                                     <li className="lnv nav-item font">
-                                        <Link to="/listmentor" style={{ textDecoration: "none", fontSize: "18px" }}>Find Mentor</Link>
+                                        <Link to="/listmentor" style={{textDecoration: "none", fontSize: "18px"}}>Find
+                                            Mentor</Link>
+                                    </li>
+                                    <li className="lnv nav-item font">
+                                        <Link to="/schedule/mentor" style={{textDecoration: "none", fontSize: "18px"}}>My Schedule</Link>
                                     </li>
                                 </Row>
-                                <NavDropdown title="Skill" style={{ textDecoration: "none", fontSize: "18px" }}>
-                                    {skill.map((s)=>(
-                                            <Link
+                                <NavDropdown title="Skill" style={{textDecoration: "none", fontSize: "18px"}}>
+                                    {skill.map((s) => (
+                                        <Link
                                             key={s.skillID}
                                             className="dropdown-item"
                                             onClick={() => handleSkillClick(s.skillID)}

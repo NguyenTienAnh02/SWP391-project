@@ -49,10 +49,7 @@ public class MentorProfileRepository {
 //        query.addScalar("years_of_exp", StandardBasicTypes.INTEGER);
 
         query.setResultTransformer(Transformers.aliasToBean(MentorProfileDTO.class));
-
-
         return query.list();
-
     }
 
     public List<MentorProfileDTO> paging(MentorProfileDTO mentorProfileDTO){
@@ -90,8 +87,6 @@ public class MentorProfileRepository {
             query.setFirstResult((mentorProfileDTO.getCurrentPage()-1)*mentorProfileDTO.getItemPerPage()); //lay ra phan tu o khoang nao
 
         }
-
         return query.list();
-
     }
 }

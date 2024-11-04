@@ -86,15 +86,8 @@ const UpdateUserProfile = () => {
             isproceed = false;
             toast.warning('You must be at least 15 years old');
         }
-       
-
-
-
-
         return isproceed;
     }
-    
-   
 
     const handleSave = () => {
         if (!IsValidate()) {
@@ -110,8 +103,6 @@ const UpdateUserProfile = () => {
                     address: address,
                     dob: dob,
         };
-    
-        
     
         fetch(`http://localhost:8080/api/user/save/${users.id}`, {
             method: "PUT",
