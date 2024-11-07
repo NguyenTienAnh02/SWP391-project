@@ -39,7 +39,7 @@ public class MentorCVService {
             mentorProfile.setGitHub(mentorCVDTO.getGithub());
             mentorProfile.setProfession(mentorCVDTO.getProfession());
             User user = userRepository.findById(userID).orElse(null);
-            mentorProfile.setMentorProfile(user);
+            mentorProfile.  setMentorProfile(user);
 
             // Save the mentor profile
             mentorProfileRepo.save(mentorProfile);

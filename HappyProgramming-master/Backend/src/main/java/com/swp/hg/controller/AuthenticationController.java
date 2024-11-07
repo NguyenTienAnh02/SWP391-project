@@ -1,7 +1,7 @@
 package com.swp.hg.controller;
 
-import com.swp.hg.auth.AuthenticationRequest;
-import com.swp.hg.auth.AuthenticationResponse;
+import com.swp.hg.request.AuthenticationRequest;
+import com.swp.hg.response.AuthenticationResponse;
 import com.swp.hg.dto.ChangePassword;
 import com.swp.hg.dto.RegistrationRequest;
 import com.swp.hg.dto.ResponseStatus;

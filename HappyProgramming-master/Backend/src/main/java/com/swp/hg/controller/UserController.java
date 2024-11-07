@@ -44,6 +44,11 @@ public class UserController {
         return ResponseEntity.ok().body(userService.getUsers());
     }
 
+    @GetMapping("/list-by-role")
+    public ResponseEntity<List<User>> getUsersByRole(@RequestParam(value = "role", required = false) String role) {
+        return ResponseEntity.ok().body(userService.getListUserByRole(role));
+    }
+
     @GetMapping("/roles")
     public ResponseEntity<List<Role>> getRole() {
         return ResponseEntity.ok().body(userService.getRoles());

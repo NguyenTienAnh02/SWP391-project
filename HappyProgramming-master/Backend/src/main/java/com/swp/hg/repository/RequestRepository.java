@@ -14,6 +14,8 @@ public interface RequestRepository extends JpaRepository<Request, Integer> {
     //get list request by mentor id
     List<Request> findByMentorProfile_MentorID(int id);
 
+//    List<Request> findBySkillCategory_skillIDAndMentorProfile_IdAndStatus(int skillCategoryId, int mentorId, int status);
+
     //get list request by user id
     List<Request> findByUsersId(int id);
 

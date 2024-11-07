@@ -1,4 +1,4 @@
-package com.swp.hg.auth;
+package com.swp.hg.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

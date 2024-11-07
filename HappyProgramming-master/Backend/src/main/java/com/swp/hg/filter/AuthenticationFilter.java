@@ -1,16 +1,13 @@
 package com.swp.hg.filter;
 
-import com.swp.hg.auth.AuthenticationRequest;
-import com.swp.hg.auth.AuthenticationResponse;
+import com.swp.hg.request.AuthenticationRequest;
+import com.swp.hg.response.AuthenticationResponse;
 import com.swp.hg.entity.Role;
 import com.swp.hg.entity.User;
 import com.swp.hg.repository.RoleCustomRepo;
-import com.swp.hg.repository.UserRepository;
 import com.swp.hg.service.Impl.JwtService;
 import com.swp.hg.service.Impl.UserImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;

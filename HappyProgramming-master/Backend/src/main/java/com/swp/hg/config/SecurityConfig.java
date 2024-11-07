@@ -34,6 +34,8 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/api/rating").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/skill").hasAnyAuthority("USER_ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/api/skill").hasAnyAuthority("USER_ADMIN")
+                .requestMatchers(HttpMethod.POST, "/api/schedule/create").hasAnyAuthority("USER_ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/api/schedule/delete/**").hasAnyAuthority("USER_ADMIN")
                 .requestMatchers(HttpMethod.GET, "/api/skill").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/mentor/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/mentor/searchmentor").permitAll()

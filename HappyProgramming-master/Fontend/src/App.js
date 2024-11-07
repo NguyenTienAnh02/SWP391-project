@@ -35,6 +35,7 @@ import ScheduleMentor from "./screens/ScheduleMentor";
 import MenteeList from "./screens/MenteeList";
 import ClassMember from "./screens/ClassMember";
 import RegisClass from "./screens/RegisClass";
+import MentorListPage from "./screens/ManageUserSchedule";
 
 function App() {
 
@@ -71,8 +72,9 @@ function App() {
      <Route path='/error' element={<Error/>}/>
      <Route path="/*" element={<Error />}/>
      <Route path='/view/ratting' element={<ViewRatting/>}/>
+     <Route path='/schedule/manage' element={<MentorListPage/>}/>
      <Route path='/manager/regist' element={<ManagerMentorRegist/>}/>
-        <Route path={'/schedule/mentor'} element={<ScheduleMentor/>} />
+        <Route path={'/schedule/mentor/:id'} element={<ScheduleMentor/>} />
         <Route path={'/mentee/list'} element={<MenteeList/>}/>
          <Route path={'/member'} element={<ClassMember/>}/>
         <Route path={'/regis-class'} element={<RegisClass/>}/>

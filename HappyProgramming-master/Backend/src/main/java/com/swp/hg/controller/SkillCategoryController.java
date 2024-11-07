@@ -1,7 +1,9 @@
 package com.swp.hg.controller;
 
+import com.swp.hg.dto.MentorSkillDTO;
 import com.swp.hg.dto.ResultDTO;
 import com.swp.hg.dto.SkillCategoryDTO;
+import com.swp.hg.entity.MentorSkill;
 import com.swp.hg.entity.SkillCategory;
 import com.swp.hg.service.SkillCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,11 @@ public class SkillCategoryController {
     @GetMapping("/skill")
     public List<SkillCategory> getAll() {
         return skillCategoryService.getAll();
+    }
+
+    @GetMapping("/skill/mentor/{id}")
+    public List<MentorSkillDTO> getSkillsByMentor(@PathVariable int id) {
+        return skillCategoryService.getSkillsByMentor(id);
     }
 
     @GetMapping("/skill/{id}")
