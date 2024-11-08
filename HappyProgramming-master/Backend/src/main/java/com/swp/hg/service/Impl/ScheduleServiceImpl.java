@@ -97,7 +97,7 @@ public class ScheduleServiceImpl implements ScheduleService {
                 .orElseThrow(() -> new RuntimeException("Skill not found "));
 
         // Validate that the skill belongs to the mentor
-        if (mentorSkillRepository.existsMentorSkillByMentorProfile_MentorProfileAndSkillCategory(mentor, skill) != false) {
+        if (!mentorSkillRepository.existsMentorSkillByMentorProfile_MentorProfileAndSkillCategory(mentor, skill)) {
             throw new RuntimeException("The specified skill does not belong to the mentor");
         }
 
@@ -127,15 +127,15 @@ public class ScheduleServiceImpl implements ScheduleService {
         // Save the schedule and convert to DTO
         Schedule savedSchedule = scheduleRepository.save(schedule);
 
-//        List<Request> requests = requestRepository.findBySkillCategory_skillIDAndMentorProfile_IdAndStatus(skill.getSkillID(), mentor.getId(), StatusRequestConfig.OPEN.getValue());
-//
-//        for(Request request1 : requests) {
-//            User mentee = userRepository.findUserById(request1.getUsers().getId());
-//            ScheduleClass scheduleClass = new ScheduleClass();
-//            scheduleClass.setSchedule(schedule);
-//            scheduleClass.setMentee(mentee);
-//            scheduleClassRepository.save(scheduleClass);
-//        }
+        List<Request> requests = requestRepository.findRequestsByConditions(skill.getSkillID(), mentor.getId(), StatusRequestConfig.OPEN.getValue());
+
+        for(Request request1 : requests) {
+            User mentee = userRepository.findUserById(request1.getUsers().getId());
+            ScheduleClass scheduleClass = new ScheduleClass();
+            scheduleClass.setSchedule(schedule);
+            scheduleClass.setMentee(mentee);
+            scheduleClassRepository.save(scheduleClass);
+        }
 
         return Optional.of(scheduleMapper.convertToDTO(savedSchedule));
     }

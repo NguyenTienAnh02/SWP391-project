@@ -33,6 +33,8 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.PUT, "/api/rating").hasAnyAuthority("USER_MENTEE")
                 .requestMatchers(HttpMethod.GET, "/api/rating").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/skill").hasAnyAuthority("USER_ADMIN")
+                .requestMatchers(HttpMethod.GET, "/api/schedule_class/**").hasAnyAuthority("USER_ADMIN", "USER_MENTOR")
+                .requestMatchers(HttpMethod.PUT, "/api/schedule_class/update-multiple").hasAnyAuthority("USER_ADMIN", "USER_MENTOR")
                 .requestMatchers(HttpMethod.PUT, "/api/skill").hasAnyAuthority("USER_ADMIN")
                 .requestMatchers(HttpMethod.POST, "/api/schedule/create").hasAnyAuthority("USER_ADMIN")
                 .requestMatchers(HttpMethod.DELETE, "/api/schedule/delete/**").hasAnyAuthority("USER_ADMIN")

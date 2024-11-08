@@ -66,13 +66,11 @@ const ScheduleTable = () => {
   useEffect(() => {
     const fetchData = async () => {
       await fetchSlotsData();
-  
       const currentWeek = getCurrentWeek();
       setSelectedWeek(currentWeek);
-  
-      await fetchMentors();
+      fetchSkills(id);
     };
-  
+
     fetchData();
   }, []);
 
@@ -82,12 +80,6 @@ const ScheduleTable = () => {
       fetchScheduleData();
     }
   }, [selectedWeek, userId]);
-
-  useEffect(() => {
-    if (selectedMentor) {
-      fetchSkills(selectedMentor);
-    }
-  }, [selectedMentor]);
 
   const fetchSlotsData = async () => {
     try {
@@ -100,21 +92,6 @@ const ScheduleTable = () => {
       console.error("Error fetching slots data:", error);
     } finally {
       setLoading(false);
-    }
-  };
-
-  const fetchMentors = async () => {
-    try {
-      const response = await axios.get(
-        "http://localhost:8080/api/user/list-by-role",
-        {
-          params: { role: MENTOR_ROLE },
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-      setMentors(response.data);
-    } catch (error) {
-      console.error("Error fetching mentors:", error);
     }
   };
 
@@ -209,7 +186,7 @@ const ScheduleTable = () => {
       await axios.post(
         "http://localhost:8080/api/schedule/create",
         {
-          mentorId: values.mentor,
+          mentorId: id,
           skillId: values.skill,
           slotId: values.slot,
           date: values.date.format("YYYY-MM-DD"),
@@ -255,18 +232,25 @@ const ScheduleTable = () => {
             }}
           >
             <Link
-              to={"/mentee/list"}
-              style={{ marginBottom: "4px", textAlign: "center" }}
+              to={`/mentee/list/${text.id}`}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                textDecoration: "none",
+              }}
             >
-              {text.skillName}
+              <span style={{ marginBottom: "4px", textAlign: "center" }}>
+                {text.skillName}
+              </span>
+              <Button
+                size="small"
+                icon={<EyeOutlined />}
+                style={{ marginTop: "4px" }}
+              >
+                View Materials
+              </Button>
             </Link>
-            <Button
-              size="small"
-              icon={<EyeOutlined />}
-              style={{ marginTop: "4px" }}
-            >
-              View Materials
-            </Button>
             {role === ADMIN_ROLE && (
               <Popconfirm
                 title="Are you sure to delete this schedule?"
@@ -342,19 +326,10 @@ const ScheduleTable = () => {
         footer={null}
       >
         <Form form={form} onFinish={handleCreateSchedule}>
-          <Form.Item name="mentor" label="Mentor" rules={[{ required: true }]}>
-            <Select placeholder="Select Mentor" onChange={handleMentorChange}>
-              {mentors.map((mentor) => (
-                <Option key={mentor.id} value={mentor.id}>
-                  {mentor.username}
-                </Option>
-              ))}
-            </Select>
-          </Form.Item>
           <Form.Item name="skill" label="Skill" rules={[{ required: true }]}>
             <Select placeholder="Select Skill">
               {skills.map((skill) => (
-                <Option key={skill.id} value={skill.id}>
+                <Option key={skill.skillId} value={skill.skillId}>
                   {skill.skillName}
                 </Option>
               ))}

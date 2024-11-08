@@ -75,7 +75,7 @@ function App() {
      <Route path='/schedule/manage' element={<MentorListPage/>}/>
      <Route path='/manager/regist' element={<ManagerMentorRegist/>}/>
         <Route path={'/schedule/mentor/:id'} element={<ScheduleMentor/>} />
-        <Route path={'/mentee/list'} element={<MenteeList/>}/>
+        <Route path={'/mentee/list/:id'} element={<MenteeList/>}/>
          <Route path={'/member'} element={<ClassMember/>}/>
         <Route path={'/regis-class'} element={<RegisClass/>}/>
      </Routes>   

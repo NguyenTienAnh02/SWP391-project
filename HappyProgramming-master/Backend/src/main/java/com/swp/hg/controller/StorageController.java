@@ -1,6 +1,6 @@
 package com.swp.hg.controller;
 
-import com.swp.hg.entity.ImageDTO;
+import com.swp.hg.dto.ImageDTO;
 import com.swp.hg.service.StorageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;

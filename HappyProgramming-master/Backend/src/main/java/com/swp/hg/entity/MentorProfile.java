@@ -69,7 +69,7 @@ private int mentorID;
     private String profession;
 
     @OneToOne
-    @JoinColumn(name = "userID")
+    @JoinColumn(name = "userid", referencedColumnName = "id")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
 //    @JsonBackReference
