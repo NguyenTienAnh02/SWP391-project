@@ -1,4 +1,4 @@
-package com.swp.hg.entity;
+package com.swp.hg.dto;
 
 import lombok.Data;
 
