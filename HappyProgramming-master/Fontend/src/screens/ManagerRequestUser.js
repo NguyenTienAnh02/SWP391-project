@@ -6,6 +6,7 @@ import TemplateUser from "../template/TemplateUser";
 import RateReviewIcon from '@mui/icons-material/RateReview';
 import { Pagination, Tag,Modal } from 'antd'
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import PayPalButton from "../component/Paypal";
 
 function ManagerRequestUser() {
     const { id } = useParams();
@@ -118,8 +119,7 @@ function ManagerRequestUser() {
             setRequest(request);
         }
     };
-
-
+    
     useEffect(() => {
         fetch(`http://localhost:8080/api/request/getbyuser/${id}`, role1)
             .then((resp) => resp.json())
@@ -204,10 +204,13 @@ function ManagerRequestUser() {
                                                 r.status === 2 ? (
                                                     <Tag color="red">Reject</Tag>
                                                 ) : r.status === 0 ? (
-                                                    <Tag color="green">Accept</Tag>
+                                                    <Tag color="green">Paid</Tag>
 
                                                 ) : r.status === 3 ? (
                                                     <Tag color="success">Finish</Tag>
+                                                ): r.status === 4 ? (
+                                                    <Tag color="green">Accept</Tag>
+
                                                 ) : (
                                                     <span></span>
                                                 )
@@ -220,7 +223,9 @@ function ManagerRequestUser() {
                                                         onClick={() => handleUpdateStatus(r.requestId, 3)}
                                                     >Close</Button>
                                                 ) : (
-                                                    <span></span>
+                                                    r.status === 4 ?
+                                                        <PayPalButton description="Purchase Description" onUpdate={() => handleUpdateStatus(r.requestId, 0)}></PayPalButton> : <span></span>
+                                                     
                                                 )}
                                             </td>
                                             <td >

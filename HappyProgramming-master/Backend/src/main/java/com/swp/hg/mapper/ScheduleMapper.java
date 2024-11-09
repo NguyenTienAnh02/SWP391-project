@@ -15,6 +15,7 @@ public class ScheduleMapper {
         dto.setSkill(schedule.getSkill());
         dto.setDate(schedule.getDate());
         dto.setSlot(schedule.getSlot());
+        dto.setScheduleClasses(schedule.getScheduleClasses());
         return dto;
     }
 }

@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -31,4 +31,7 @@ public class Schedule {
     @ManyToOne
     @JoinColumn(name = "slot_id", nullable = false)
     private Slot slot;
+
+    @OneToMany(mappedBy = "schedule", cascade = CascadeType.ALL)
+    private List<ScheduleClass> scheduleClasses;
 }

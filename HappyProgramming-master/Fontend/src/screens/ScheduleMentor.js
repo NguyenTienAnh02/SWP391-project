@@ -18,7 +18,7 @@ import { useParams } from "react-router-dom";
 import moment from "moment";
 import Header from "../component/Header";
 import { Container } from "react-bootstrap";
-import { MENTOR_ROLE, ADMIN_ROLE } from "../constants/constant";
+import { MENTEE_ROLE, ADMIN_ROLE } from "../constants/constant";
 
 const { Text } = Typography;
 const { Option } = Select;
@@ -37,7 +37,6 @@ const ScheduleTable = () => {
   const [skills, setSkills] = useState([]); // List of skills
   const [loading, setLoading] = useState(true);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [selectedMentor, setSelectedMentor] = useState(null);
 
   // Form instance
   const [form] = Form.useForm();
@@ -113,10 +112,6 @@ const ScheduleTable = () => {
     setSelectedWeek(value);
   };
 
-  const handleMentorChange = (value) => {
-    setSelectedMentor(value);
-  };
-
   const fetchScheduleData = async () => {
     if (!selectedWeek || !userId) return;
     try {
@@ -181,6 +176,10 @@ const ScheduleTable = () => {
     form.resetFields();
   };
 
+  const handleUpdate = () => {
+
+  }
+
   const handleCreateSchedule = async (values) => {
     try {
       await axios.post(
@@ -222,8 +221,9 @@ const ScheduleTable = () => {
       title: day,
       dataIndex: day,
       key: day,
-      render: (text) =>
-        text ? (
+      render: (text) => {
+        const status = text?.scheduleClasses.find((schedule) => schedule.mentee.id == userId)?.attendanceStatus;
+        return text ? (
           <div
             style={{
               display: "flex",
@@ -251,6 +251,7 @@ const ScheduleTable = () => {
                 View Materials
               </Button>
             </Link>
+            {role === MENTEE_ROLE && <div style={{ color: status ? "green" : "red", }}>{status ? "Attended" : "Absent"}</div>}
             {role === ADMIN_ROLE && (
               <Popconfirm
                 title="Are you sure to delete this schedule?"
@@ -270,7 +271,8 @@ const ScheduleTable = () => {
           </div>
         ) : (
           "-"
-        ),
+        );
+      },
     })),
   ];
 

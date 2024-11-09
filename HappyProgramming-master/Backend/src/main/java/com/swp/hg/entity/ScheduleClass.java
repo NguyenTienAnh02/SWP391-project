@@ -1,5 +1,6 @@
 package com.swp.hg.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.swp.hg.config.StatusClassAttendance;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -19,6 +20,7 @@ public class ScheduleClass {
 
     @ManyToOne
     @JoinColumn(name = "schedule_id", nullable = false)
+    @JsonBackReference
     private Schedule schedule;
 
     @ManyToOne
