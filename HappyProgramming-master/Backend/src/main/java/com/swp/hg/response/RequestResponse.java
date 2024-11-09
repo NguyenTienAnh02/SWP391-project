@@ -17,7 +17,8 @@ public class RequestResponse {
     private int mentorStatus;
     private Integer menteeId; // Use Integer to allow null value
     private Integer mentorId; // Use Integer to allow null value
-
+    private String mentorName;
+    private String skillName;
     // Constructors, getters, and setters
     // ...
 }

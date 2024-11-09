@@ -73,6 +73,8 @@ function ManagerRequest() {
                                 <thead>
                                     <tr>
                                         <th >Id</th>
+                                        <th >Mentor</th>
+                                        <th >Mentor Skills</th>
                                         <th >content</th>
                                         <th>date</th>
                                         <th >link</th>
@@ -80,9 +82,11 @@ function ManagerRequest() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {currentRequest.map((r) => (
-                                        <tr key={r.requestID}>
-                                            <td >{r.requestID}</td>
+                                    {currentRequest.map((r, index) => (
+                                        <tr key={index + 1}>
+                                            <td >{index + 1}</td>
+                                            <td>{r.mentorName}</td>
+                                            <td>{r.skillName}</td>
                                             <td >{r.content}</td>
                                             <td>{r.date}</td>
                                             <td><a href={r.link}>{r.link}</a></td>

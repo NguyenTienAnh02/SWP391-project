@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 @Entity
 @Data
@@ -48,4 +49,13 @@ public class Request {
     @JoinColumn(name = "mentorID")
     @JsonBackReference
     private MentorProfile mentorProfile;
+
+    public String requestSkillsString() {
+        if (mentorProfile != null && mentorProfile.getMentorSkills() != null) {
+            return mentorProfile.getMentorSkills().stream()
+                    .map(mentorSkill -> mentorSkill.getSkillCategory().getSkillName())
+                    .collect(Collectors.joining(", "));
+        }
+        return "";
+    }
 }

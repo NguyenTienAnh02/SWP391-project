@@ -32,8 +32,17 @@ public class RequestController {
 
     //list all request (for Admin)
     @GetMapping("/getall")
-    public List<Request> listRequest(){
-        return requestService.getALlRequest();
+    public ResponseEntity<List<RequestResponse>> listRequest(){
+
+        List<Request> requests = requestService.getALlRequest();
+        List<RequestResponse> responseList = new ArrayList<>();
+
+        for (Request request : requests) {
+            RequestResponse response = createRequestResponse(request);
+            responseList.add(response);
+        }
+
+        return ResponseEntity.ok(responseList);
     }
 
 
@@ -112,7 +121,8 @@ public class RequestController {
         response.setMentorStatus(request.getMentorStatus());
         response.setMenteeId(request.getUsers().getId());
         response.setMentorId(request.getMentorProfile().getMentorID());
-
+        response.setMentorName(request.getMentorProfile().getMentorProfile().getUsername());
+        response.setSkillName(request.requestSkillsString());
         return response;
     }
 

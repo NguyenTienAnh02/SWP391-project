@@ -176,9 +176,8 @@ function ManagerRequestUser() {
                                     <tr>
                                         
                                         <th >Mentor Name</th>
+                                        <th>Mentor Skills</th>
                                         <th>Title</th>
-
-
                                         <th >Link</th>
 
                                         <th>Status</th>
@@ -196,6 +195,9 @@ function ManagerRequestUser() {
                                             {allMentor.map((m) =>
                                                 m.mentorID === r.mentorId ? m.mentorProfile.fullname : " "
                                               )}
+                                            </td>
+                                            <td>
+                                                {r.skillName}
                                             </td>
                                             <td>{r.title}</td>
                                             <td><a target="_blank" href={r.link}>{r.link}</a></td>
